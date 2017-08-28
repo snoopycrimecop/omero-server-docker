@@ -9,7 +9,7 @@ RUN yum -y install epel-release \
     && yum -y install ansible sudo \
     && ansible-galaxy install -p /opt/setup/roles -r requirements.yml
 
-ARG OMERO_VERSION=latest
+ARG OMERO_VERSION=5.3.3
 RUN ansible-playbook playbook.yml -e omero_server_release=$OMERO_VERSION
 
 RUN curl -L -o /usr/local/bin/dumb-init \
